@@ -11,7 +11,7 @@ description = {
 dependencies = {
    "wtf-action-simple_response >= 0.1",
    "wtf-honeybot-core >= 0.1",
-   "lua-resty-nettle" >= 0.105"
+   "lua-resty-nettle >= 0.105"
 }
 build = {
    type = "builtin",
