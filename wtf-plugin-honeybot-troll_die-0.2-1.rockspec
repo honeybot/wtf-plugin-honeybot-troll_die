@@ -1,8 +1,8 @@
 package = "wtf-plugin-honeybot-troll_die"
-version = "0.1-1"
+version = "0.2-1"
 source = {
    url = "git+https://github.com/honeybot/wtf-plugin-honeybot-troll_die",
-   tag = "0.1"
+   tag = "0.2"
 }
 description = {
    homepage = "https://github.com/honeybot/wtf-plugin-honeybot-troll_die",

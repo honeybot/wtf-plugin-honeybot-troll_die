@@ -20,17 +20,21 @@ function _M:content(...)
   local do_action = self:get_mandatory_parameter('action')
   if ngx.ctx.post then
     for p_name, p_value in pairs(ngx.ctx.post) do
-      die = string.sub(p_value, 1, 8)
-      if die == "die(md5(" then
-        payload = string.sub(p_value, 9, -4)
-        local hash=md5.new()
-        hash:update(payload)
-        instance:get_action(do_action):act(str.to_hex(hash:digest()))
+      local a,b,c = string.match(p_value,"^.*([dD][iI][eE])%((m?d?5?%(?)'?\"?([^)'\"]*).*$")
+      if a ~= nil then
+        if b == '' then
+          payload = c
+        else
+          local hash=md5.new()
+          hash:update(c)
+          payload = str.to_hex(hash:digest())
+        end
+        
+        instance:get_action(do_action):act(payload)
       end
     end
   end
-  instance:get_action(do_action):act("Didn't catch anithing")
-  
+  -- instance:get_action(do_action):act("Didn't catch anything")
   
 end
 
