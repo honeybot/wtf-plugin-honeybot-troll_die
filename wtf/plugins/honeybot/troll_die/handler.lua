@@ -20,6 +20,7 @@ function _M:content(...)
   local do_action = self:get_mandatory_parameter('action')
   if ngx.ctx.post then
     for p_name, p_value in pairs(ngx.ctx.post) do
+      p_value = ngx.decode_base64(p_value) or p_value
       local a,b,c = string.match(p_value,"^.*([dD][iI][eE])%((m?d?5?%(?)'?\"?([^)'\"]*).*$")
       if a ~= nil then
         if b == '' then
